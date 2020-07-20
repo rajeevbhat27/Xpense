@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Personal Expense</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    </link>
+
+</head>
+
+<body>
+    <h1 id="displayexpense"></h1>
+    <input id="inputExpense" type="text" />
+    <button id="btnAddExpense">+</button>
+
+</body>
+<script>
+    let totalExpense = 0;
+    let displayExpense = document.querySelector("#displayexpense");
+    displayExpense.textContent = totalExpense;
+
+    function addTotalExpense() {
+        const expenseText = document.querySelector("#inputExpense");
+        let expense = parseInt(expenseText.value);
+        totalExpense = totalExpense + expense;
+        displayExpense.textContent = totalExpense;
+
+
+
+    }
+
+    const btnAddExpense = document.querySelector("#btnAddExpense");
+    btnAddExpense.addEventListener("click", addTotalExpense, false);
+</script>
+
+</html>
