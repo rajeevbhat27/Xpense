@@ -11,54 +11,121 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/fontawesome.css"
         integrity="sha384-eHoocPgXsiuZh+Yy6+7DsKAerLXyJmu2Hadh4QYyt+8v86geixVYwFqUvMU8X90l" crossorigin="anonymous" />
     <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"
-        integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP" crossorigin="anonymous">
-
-    </script>
+        integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/main.css" />
 
     <title>Xpense</title>
 </head>
 
-<body onload="fetchDetails()">
+<body class="bg-light d-flex flex-column" onload="fetchDetails()">
     <nav class="navbar navbar-dark bg-dark">
         <span class="navbar-brand mb-0 h1">Xpense</span>
         <span class="navbar-brand mb-0 h1" id="displayexpense"></span>
     </nav>
-    <div class="container-fluid bg-light" style="min-height: 100vh">
-        <div class="container">
-            <div class="jumbotron mt-4">
-
-                <div class="input-group mb-3">
-                    <input id="inputExpense" type="text" pattern="\d+" class="form-control" placeholder="Amount spent"
-                        aria-label="Amount spent" aria-describedby="spent in rupee" required />
-                    <div class="input-group-append">
-                        <span class="input-group-text" id="spent in rupee">₹</span>
-                    </div>
-                </div>
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="spent at">@</span>
-                    </div>
-                    <input id="inputDesc" type="text" class="form-control" placeholder="spent On" aria-label="spent On"
-                        aria-describedby="spent at" required />
-                    <div class="input-group-append">
-                        <button id="btnAddExpense" class="btn btn-primary" type="button">Add</button>
-                    </div>
-                </div>
+    <div class="container flex-grow-1">
+      <form id="expense-form" class="container-fluid">
+        <div class="jumbotron mt-4">
+          <div class="input-group mb-3">
+            <div class="form-check form-check-inline">
+              <label class="form-check-label"><b>Category: </b></label>
             </div>
-            <div>
-                <ul id="summary" class="list-group">
-
-                </ul>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="category" value="Shopping" required>
+              <label class="form-check-label">Shopping</label>
             </div>
-
-
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="category" value="Food">
+              <label class="form-check-label">Food</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="category" value="Rent">
+              <label class="form-check-label">Rent</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="category" value="Bill">
+              <label class="form-check-label">Bill</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="category" value="Misc.">
+              <label class="form-check-label">Misc.</label>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+              <input id="inputExpense" type="text" pattern="\d+" class="form-control" placeholder="Amount spent"
+                  aria-label="Amount spent" aria-describedby="spent in rupee" required />
+              <div class="input-group-append">
+                  <span class="input-group-text" id="spent in rupee">₹</span>
+              </div>
+          </div>
+          
+          <button id="btnAddExpense" class="btn btn-primary" type="submit">Add</button>
         </div>
+      </form>
+      
+      <div class="container-fluid">
+          <ul id="summary" class="list-group"></ul>
+      </div>
 
     </div>
+
     <footer class="page-footer font-small black">
         <div class="footer-copyright text-center py-3">© 2020 Developed By : Rajeev</div>
     </footer>
-</body>
-<script type="text/javascript" src="./script/main.js"></script>
 
+    <form id="edit-modal" class="modal fade" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Edit Entry</h5>
+            <button type="button" class="close" onclick="hideModal()" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+              <div class="input-group mb-3">
+                <div class="form-check form-check-inline">
+                  <label class="form-check-label"><b>Category: </b></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="category" value="Shopping" required>
+                  <label class="form-check-label">Shopping</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="category" value="Food">
+                  <label class="form-check-label">Food</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="category" value="Rent">
+                  <label class="form-check-label">Rent</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="category" value="Bill">
+                  <label class="form-check-label">Bill</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="category" value="Misc.">
+                  <label class="form-check-label">Misc.</label>
+                </div>
+              </div>
+              <div class="input-group mb-3">
+                  <input name="amount" id="inputExpense" type="text" pattern="\d+" class="form-control" placeholder="Amount spent"
+                      aria-label="Amount spent" aria-describedby="spent in rupee" required />
+                  <div class="input-group-append">
+                      <span class="input-group-text" id="spent in rupee">₹</span>
+                  </div>
+              </div>
+              <input name="time" value="0" hidden aria-hidden="true" />
+              
+              <button id="btnAddExpense" class="btn btn-primary" type="submit">Add</button>
+          </div>
+          <div class="modal-footer">
+            <button type="button" onclick="hideModal()" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </form>
+    <div id="edit-modal-backdrop" class="modal-backdrop fade"></div>
+    <script type="text/javascript" src="./script/main.js"></script>
+</body>
 </html>
