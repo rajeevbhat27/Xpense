@@ -1,7 +1,44 @@
+html {
+  height: 100%;
+  width: 100%;
+} 
+
 body {
+    height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 80vh;
+}
+
+footer {
+  justify-self: flex-end;
+}
+
+.modal, .modal-backdrop {
+  opacity: 0;
+  display: block;
+  pointer-events: none;
+}
+
+.modal:not(.show) * {
+  pointer-events: none;
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.modal-backdrop.show {
+  opacity: .6;
+  pointer-events: initial;
+}
+
+.modal.show  {
+  opacity: 1;
+  pointer-events: initial;
 }
