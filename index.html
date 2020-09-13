@@ -17,7 +17,7 @@
     <title>Xpense</title>
 </head>
 
-<body class="bg-light d-flex flex-column" onload="fetchDetails()">
+<body class="bg-light d-flex flex-column" onload="init()">
     <nav class="navbar navbar-dark bg-dark">
         <span class="navbar-brand mb-0 h1">Xpense</span>
         <span class="navbar-brand mb-0 h1" id="displayexpense"></span>
@@ -25,30 +25,9 @@
     <div class="container flex-grow-1">
       <form id="expense-form" class="container-fluid">
         <div class="jumbotron mt-4">
-          <div class="input-group mb-3">
-            <div class="form-check form-check-inline">
-              <label class="form-check-label"><b>Category: </b></label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="category" value="Shopping" required>
-              <label class="form-check-label">Shopping</label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="category" value="Food">
-              <label class="form-check-label">Food</label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="category" value="Rent">
-              <label class="form-check-label">Rent</label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="category" value="Bill">
-              <label class="form-check-label">Bill</label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="category" value="Misc.">
-              <label class="form-check-label">Misc.</label>
-            </div>
+          <div class="form-group mb-3">
+            <label for="category"><b>Category: </b></label>
+            <select id="category" name="category" class="form-control categories"></select>
           </div>
           <div class="input-group mb-3">
               <input id="inputExpense" type="text" pattern="\d+" class="form-control" placeholder="Amount spent"
@@ -82,31 +61,10 @@
             </button>
           </div>
           <div class="modal-body">
-              <div class="input-group mb-3">
-                <div class="form-check form-check-inline">
-                  <label class="form-check-label"><b>Category: </b></label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="category" value="Shopping" required>
-                  <label class="form-check-label">Shopping</label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="category" value="Food">
-                  <label class="form-check-label">Food</label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="category" value="Rent">
-                  <label class="form-check-label">Rent</label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="category" value="Bill">
-                  <label class="form-check-label">Bill</label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="category" value="Misc.">
-                  <label class="form-check-label">Misc.</label>
-                </div>
-              </div>
+            <div class="form-group mb-3">
+              <label for="edit-category"><b>Category: </b></label>
+              <select id="edit-category" name="category" class="form-control categories"></select>
+            </div>
               <div class="input-group mb-3">
                   <input name="amount" id="inputExpense" type="text" pattern="\d+" class="form-control" placeholder="Amount spent"
                       aria-label="Amount spent" aria-describedby="spent in rupee" required />

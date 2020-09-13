@@ -2,6 +2,11 @@
  let totalExpense = 0;
  let AllExpense = [];
 
+ function init() {
+   loadDropdown();
+   fetchDetails();
+ }
+
  //onLoad function
  function fetchDetails() {
      if (localStorage.getItem('xpenses') !== null) {
@@ -15,8 +20,22 @@
      renderList(AllExpense);
 
      displayExpense.textContent = ` Total: ${totalExpense}₹`;
-
  }
+
+ //get dropdown options
+ function loadDropdown() {
+   const options = [
+     'Shopping',
+     'Food',
+     'Rent',
+     'Bill',
+     'Misc',
+   ];
+   const html = options.map(option => `<option value="${option}">${option}</option>\n`).join();
+   const inputs = document.querySelectorAll('form .categories');
+   console.log(inputs)
+   inputs.forEach(input => input.innerHTML = html);
+  }
 
  //getting reference
  const displayExpense = document.querySelector("#displayexpense");
@@ -30,7 +49,7 @@
 
  //validation for no input or wrong input
  function validate() {
-     if (!(expenseText.value && expenseCategory.value)) {
+     if (!(expenseText.value && expenseCategory.options[expenseCategory.selectedIndex].value)) {
          window.alert("Fields should not be Empty!!");
          return false;
      }
@@ -50,7 +69,7 @@
          //expense object
          const expenseData = {};
          const expense = parseInt(expenseText.value);
-         const cat = expenseCategory.value;
+         const cat = expenseCategory.options[expenseCategory.selectedIndex].value;
 
 
          //new expense object
