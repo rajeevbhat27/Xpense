@@ -1,4 +1,4 @@
 ﻿# Xpense : A Personal Expense Tracker
-Live URL : https://my-xpense-manager.netlify.app/
+Live URL :http://bit.ly/Xpense
 <br/>
 
