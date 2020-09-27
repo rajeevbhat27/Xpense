@@ -1,19 +1,20 @@
 html {
   height: 100%;
   width: 100%;
-} 
+}
 
 body {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 footer {
   justify-self: flex-end;
 }
 
-.modal, .modal-backdrop {
+.modal,
+.modal-backdrop {
   opacity: 0;
   display: block;
   pointer-events: none;
@@ -38,7 +39,19 @@ footer {
   pointer-events: initial;
 }
 
-.modal.show  {
+.modal.show {
   opacity: 1;
   pointer-events: initial;
+}
+
+.px-amount {
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .px-amount {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 }
